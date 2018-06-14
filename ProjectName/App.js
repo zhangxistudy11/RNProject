@@ -5,17 +5,7 @@
  */
 
 import React, { Component } from 'react';
-import {
-  Platform,
-  StyleSheet,
-  FlatList,
-  Text,
-  TextInput,
-  ScrollView, 
-  SectionList,
-  Image,
-  View
-} from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -55,6 +45,10 @@ export default class App extends Component<Props> {
       uri: 'https://upload.wikimedia.org/wikipedia/commons/d/de/Bananavarieties.jpg'
     };
     return (
+      <View style={styles.container}>
+      <View style={styles.view1} />
+      <View style={styles.view2} />
+    </View>
       /*
       <View>
         <Text style={styles.red}>just red</Text>
@@ -184,6 +178,7 @@ export default class App extends Component<Props> {
 />
 </View>
 */
+/*
 <View style={styles.container}>
         <SectionList
           sections={[
@@ -194,14 +189,31 @@ export default class App extends Component<Props> {
           renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
         />
       </View>
+      */
     );
   }
 }
 const styles = StyleSheet.create({
   container: {
    flex: 1,
-   paddingTop: 22
+   backgroundColor:'gray',
+   // flexDirection:'row',
+   // alignItems:'center',
+   // justifyContent:'center'
   },
+  view1:{
+    flex:1,
+height:150,
+width:150,
+backgroundColor:'red'
+  },
+  view2:{
+    flex:1,
+    height:150,
+    width:150,
+    backgroundColor:'green',
+    alignSelf:'stretch'
+      },
   sectionHeader: {
     paddingTop: 2,
     paddingLeft: 10,
@@ -260,6 +272,6 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
- 
+
 });
  */
