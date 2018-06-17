@@ -16,7 +16,10 @@ import {
   Button,
   ScrollView,
   Dimensions,
-  ListView
+  ListView,
+  Alert,
+  TouchableHighlight,
+  StatusBar
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -57,11 +60,19 @@ export default class App extends Component < Props > {
 
     return (
        < View style = {  styles.container  } >
+          <StatusBar
+           backgroundColor={'blue'}
+           barStyle={'default'}
+           networkActivtyIndicatorVisible={true}
+          >
+          </StatusBar>
 
           <View style={styles.searchbar}>
           <TextInput style={styles.button} placeholder='搜索商品'>
           </TextInput>
-          <Button style={styles.button} title='搜索'></Button>
+          <Button style={styles.button} title='搜索' onPress={
+            ()=>Alert.alert('你点击了搜索按钮',null,null)
+          }></Button>
           </View>
 
           <View style={styles.advertisement}>
@@ -70,18 +81,20 @@ export default class App extends Component < Props > {
            showHorizontalScrollIndicator={false}
            pagingEnabled = {true}
            >
+           <TouchableHighlight onPress={() => Alert.alert('你点击了轮播图', null, null)}>
+
             <Text style={
               {
               width: Dimensions.get('window').width,
               height: 180,
               backgroundColor:'gray'}
             }>广告1</Text>
-
+	</TouchableHighlight>
             <Text style={{
               width: Dimensions.get('window').width,
             height: 180,
             backgroundColor:'yellow'}
-            }>广告1</Text>
+          }>广告2</Text>
 
             <Text style={{
                width: Dimensions.get('window').width,
@@ -125,7 +138,10 @@ export default class App extends Component < Props > {
   _renderRow = (rowData,sectionID,rowID) =>{
     return (
       <View style={styles.row}>
+      <TouchableHighlight onPress={() => Alert.alert('你点击了轮播图', null, null)}>
+
         <Text>{rowData}</Text>
+        </TouchableHighlight>
       </View>
     );
   }
