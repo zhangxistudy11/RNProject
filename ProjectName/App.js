@@ -46,7 +46,9 @@ export default class App extends Component < Props > {
           '商品5',
           '商品6',
           '商品7',
-          '商品8'
+          '商品8',
+          '商品9',
+          '商品10',
         ]
       )
     };
