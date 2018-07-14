@@ -1,9 +1,6 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
- import Detail from './detail';
+import Detail from './detail';
+import DetailTwo from './detailTwo';
+
  import Swiper from 'react-native-swiper';
 
 import React, {
@@ -112,33 +109,7 @@ export default class home extends Component < Props > {
            }>广告3</Text>
           </Swiper>
           /*
-          <ScrollView  ref = "scrollView"
-           horizontal = {true}
-           showHorizontalScrollIndicator={false}
-           pagingEnabled = {true}
-           >
-           <TouchableHighlight onPress={() => Alert.alert('你点击了轮播图', null, null)}>
-
-            <Text style={
-              {
-              width: Dimensions.get('window').width,
-              height: 180,
-              backgroundColor:'gray'}
-            }>广告1</Text>
-	</TouchableHighlight>
-            <Text style={{
-              width: Dimensions.get('window').width,
-            height: 180,
-            backgroundColor:'yellow'}
-          }>广告2</Text>
-
-            <Text style={{
-               width: Dimensions.get('window').width,
-              height: 180,
-              backgroundColor:'orange'}
-            }>广告3</Text>
-
-          </ScrollView>
+         
 */
     <View style={[styles.indicator,{left:left}]}>
 
@@ -175,22 +146,42 @@ export default class home extends Component < Props > {
 	// 		this.refs.scrollView.scrollResponderScrollTo({x: offSetX, y: 0, animated: true});
 	// 	}, 2000); // 设置定时器的间隔为2s
 	// }
+   pushNewPage(rowID,sectionID){
+     let pageName = 'Detail';
+     if(rowID==0){
+      const {navigator}=this.props;
+      if (navigator) {
+        navigator.push({
+          name:'detail',
+          component:Detail,
+          params:{
+            productTitle:'fangsong'
+          }
+        })
+      }
+     }
+     if(rowID==1)
+     {
+      const {navigator}=this.props;
+      if (navigator) {
+        navigator.push({
+          name:'detailTwo',
+          component:DetailTwo,
+          params:{
+            productTitle:'fangsong'
+          }
+        })
+      }
+     }
+    
+   }
 
   _renderRow = (rowData,sectionID,rowID) =>{
     return (
       <View style={styles.row}>
       <TouchableHighlight onPress={() =>
         {
-          const {navigator}=this.props;
-          if (navigator) {
-            navigator.push({
-              name:'detail',
-              component:Detail,
-              params:{
-                productTitle:'fangsong'
-              }
-            })
-          }
+          this.pushNewPage(rowID,sectionID)
         }
       }>
 
