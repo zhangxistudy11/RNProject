@@ -26,7 +26,12 @@ export default class detailTwo extends React.Component {
         ).start(() => this._startAnimated());
 
     }
-	
+	_pressBackButton=() => {
+		const { navigator } = this.props;
+		if (navigator) {
+			navigator.pop();
+		}
+	}
 	
     render(){
 		const rotateZ = this.state.animatedValue.interpolate({
@@ -56,6 +61,13 @@ export default class detailTwo extends React.Component {
 
        return(
 		<View style={styles.container}>
+        
+		<View style={[{ backgroundColor: 'white', marginLeft: 0, marginTop: 0, height: 64, width: Dimensions.get('window').width, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: "column" }]}>
+				<TouchableOpacity onPress={this._pressBackButton}>
+					 <Text style={styles.back}>返回</Text>
+				 </TouchableOpacity>
+
+				</View>
 
 		<Animated.View
 			style={{
@@ -120,7 +132,7 @@ export default class detailTwo extends React.Component {
 			}}
 		/>
 
-		<TouchableOpacity style={styles.touchStyle} onPress={this._startAnimated.bind(this)}>
+		<TouchableOpacity style={styles.touchStyle} onPress={this._startAnimated}>
 			<Text style={{width:200,height:100,textAlign:'center',lineHeight:100}}>点击开始动画</Text>
 		</TouchableOpacity>
 	</View>

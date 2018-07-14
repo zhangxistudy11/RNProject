@@ -1,6 +1,6 @@
 import Detail from './detail';
 import DetailTwo from './detailTwo';
-
+import DetailThree from './detailThree';
  import Swiper from 'react-native-swiper';
 
 import React, {
@@ -173,7 +173,19 @@ export default class home extends Component < Props > {
         })
       }
      }
-    
+     if(rowID==2)
+     {
+      const {navigator}=this.props;
+      if (navigator) {
+        navigator.push({
+          name:'detailThree',
+          component:DetailThree,
+          params:{
+            productTitle:'fangsong'
+          }
+        })
+      }
+     }
    }
 
   _renderRow = (rowData,sectionID,rowID) =>{
