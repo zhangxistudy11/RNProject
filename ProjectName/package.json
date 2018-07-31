@@ -8,12 +8,14 @@
   },
   "dependencies": {
     "link": "^0.1.5",
-    "native-base": "^2.6.1",
+    "native-base": "^2.7.2",
     "react": "16.3.1",
     "react-native": "0.55.4",
     "react-native-deprecated-custom-components": "^0.1.2",
     "react-native-swiper": "^1.5.13",
-    "react-native-vector-icons": "^4.6.0"
+    "react-native-vector-icons": "^4.6.0",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "babel-jest": "23.0.1",
