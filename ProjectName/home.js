@@ -5,7 +5,9 @@ import DetailFour from './detailFour';
 import DetailFive from './detailFive';
 
 
- import Swiper from 'react-native-swiper';
+
+import Swiper from 'react-native-swiper';
+
 
 import React, {
   Component
@@ -72,7 +74,7 @@ export default class home extends Component < Props > {
    const indicatiorWidth = circleSize * advertisementCount;
    const left = (Dimensions.get('window').width -indicatiorWidth)/2;
     return (
-
+     
        < View style = {  styles.container  } >
           <StatusBar
            backgroundColor={'blue'}
@@ -126,6 +128,8 @@ export default class home extends Component < Props > {
 
           </View>
        </View>
+      
+
     );
   }
   componentDidMount(){

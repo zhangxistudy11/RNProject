@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, WebView, Dimensions, TouchableWithoutFeedback, Image, Animated, Easing, Modal, TouchableHighlight } from 'react-native';
 import FlightChangeDetail from './Component/FlightChangeDetail';
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import OrderDetailReducer from './Reducer/OrderDetailReducer'
+
+import { connect } from 'react-redux';
 
 
-const store = createStore(OrderDetailReducer)
 
-export default class detailFive extends React.Component {
+ class detailFive extends React.Component {
 
 	constructor(props) {
 		super(props)
@@ -27,17 +25,34 @@ export default class detailFive extends React.Component {
 		}
 	}
 
+	// handleSwitchColor (color) {
+    //     if (this.props.onSwitchColor) {
+    //         this.props.onSwitchColor(color)
+    //     }
+    // }
+
+	changeModalState1= () =>{
+        if (this.props.changeModalState) {
+            this.props.changeModalState()
+        }
+    }
 	render() {
-
-
 		return (
-			<Provider store={store}>
-
-				<View style={styles.container}>
+			// <Provider store={store}>
+				<View style={{
+					flex: 1,
+					justifyContent: 'flex-start',
+					alignItems: 'flex-start'
+				}}>
 
 					<View style={[{ backgroundColor: 'white', marginLeft: 0, marginTop: 0, height: 64, width: Dimensions.get('window').width, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: "column" }]}>
 						<TouchableOpacity onPress={this._pressBackButton}>
-							<Text style={styles.back}>返回</Text>
+							<Text style={{
+			fontSize: 20,
+			color: 'blue',
+			marginTop: 20,
+			marginLeft: 18
+		}}>返回</Text>
 						</TouchableOpacity>
 					</View>
 
@@ -52,15 +67,15 @@ export default class detailFive extends React.Component {
 								height: 50,
 								backgroundColor: 'black'
 							}}
-							onPress={() => {
-								store.dispatch({
-									type: 'CHANGE_STATE',
-									modalVisible: true,
-									textStr: 'xxxxxx'
-								})
-								console.log('11111')
-							}}>
-							<Text style={styles.back}>弹出</Text>
+							onPress={
+								this.changeModalState1
+							}>
+							<Text style={ {
+			fontSize: 20,
+			color: 'blue',
+			marginTop: 20,
+			marginLeft: 18
+		}}>弹出</Text>
 
 
 						</TouchableOpacity>
@@ -70,72 +85,61 @@ export default class detailFive extends React.Component {
 
 				</View>
 
-			</Provider>
+			// </Provider>
 
 		)
 
 	}
 
-	changeModalState(result) {
-		let aa = result;
-		this.setState({ modalVisible: aa })
-	}
+	// const styles = StyleSheet.create({
+	// 	container: {
+	// 		flex: 1,
+	// 		justifyContent: 'flex-start',
+	// 		alignItems: 'flex-start'
+	// 	},
+	// 	text: {
+	// 		fontSize: 20
+	// 	},
+	// 	back: {
+	// 		fontSize: 20,
+	// 		color: 'blue',
+	// 		marginTop: 20,
+	// 		marginLeft: 18
+	// 	},
+	// 	web: {
+	// 		width: 200,
+	// 		height: 200
+	// 	}
+	// });	
 
 
 }
-/*
-		 <Modal
-		 
-          animationType="fade"
-          transparent={true}
-          visible={this.state.modalVisible}
-          
-        >
-		<View opacity={0.8}  style={{flex:1,justifyContent:'center',alignItems:'center',backgroundColor:'black'}
-		}>
-				 <TouchableOpacity
-			 style={{
-				 marginLeft:80,
-				 marginTop:40,
-				width:100,
-			  height: 50,
-			  backgroundColor:'yellow'}}
-			 onPress={() => {
-				 this.changeModalState(false);
-                     console.log('11111')
-                }}>
-		  
-		  <Text style={styles.back}>隐藏</Text>
 
-		 </TouchableOpacity>
 
-		 <Text style={
-             {
-             width: 70,
-             height: 40,
-             backgroundColor:'gray'}
-           }>我是弹框</Text>
-			</View>
+function mapStateToProps(state) {
+    return state;
+}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeModalState: () => {
+      dispatch({ type: 'CHANGE_STATE', textStr: '00000',modalVisible:true })
+    }
+  }
+}
 
-		 </Modal>
-		 */
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'flex-start',
-		alignItems: 'flex-start'
-	},
-	text: {
-		fontSize: 20
-	},
-	back: {
-		fontSize: 20,
-		color: 'blue',
-		marginTop: 20,
-		marginLeft: 18
-	},
-	web: {
-		width: 200,
-		height: 200
-	}
-});
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         onSwitchColor: (color) => {
+//             dispatch({ type: 'CHANGE_COLOR', themeColor: color })
+//         }
+//     }
+// }
+
+
+
+detailFive = connect(mapStateToProps,mapDispatchToProps)(detailFive)
+
+export default detailFive
+
+
+

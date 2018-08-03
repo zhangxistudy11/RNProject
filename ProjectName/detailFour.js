@@ -4,11 +4,9 @@ import Header from './Component/Header';
 import Content from './Component/Content';
 import ThemeSwitch from './Component/ThemeSwitch';
 
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import themeReducer from './Reducer/reducer'
 
-const store = createStore(themeReducer)
+
+
 
 export default class detailFour extends React.Component {
 
@@ -28,7 +26,7 @@ export default class detailFour extends React.Component {
 	render() {
 
 		return (
-			<Provider store={store}>
+			
 
 			<View style={styles.container}>
 				<View style={[{ backgroundColor: 'white', marginLeft: 0, marginTop: 0, height: 64, width: Dimensions.get('window').width, justifyContent: 'flex-start', alignItems: 'flex-start', flexDirection: "column" }]}>
@@ -41,7 +39,7 @@ export default class detailFour extends React.Component {
 				<ThemeSwitch style={{marginTop:30}}></ThemeSwitch>
 
 			</View>
-			</Provider>
+			
 		);
 
 	}

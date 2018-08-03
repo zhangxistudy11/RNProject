@@ -41,7 +41,12 @@ class FlightChangeDetail extends React.Component {
                             console.log('11111')
                         }}>
 
-                        <Text style={styles.back}>隐藏</Text>
+                        <Text style={{
+		fontSize: 20,
+		color: 'blue',
+		marginTop: 20,
+		marginLeft: 18
+	}}>隐藏</Text>
 
                     </TouchableOpacity>
 
